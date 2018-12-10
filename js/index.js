@@ -40,8 +40,8 @@ var banner = function () {
 
     //创建添加过渡动画的函数
     var addTransition = function () {
-        imgBox.style.transition = 'all 0.2s';
-        imgBox.style.webkitTransition = 'all 0.2s';
+        imgBox.style.transition = 'all 0.5s ease-out';
+        imgBox.style.webkitTransition = 'all 0.5s ease-out';
     };
     //创建去除过渡动画的函数
     var removeTransition = function () {
@@ -152,7 +152,6 @@ var banner = function () {
             setTranslate(-index * width);
         }, 1500);
     });
-
 };
 
 var downTime = function () {
