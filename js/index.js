@@ -1,20 +1,20 @@
 window.onload = function () {
     /* 1.顶部搜索栏 */
-    serach();
+    search();
     /* 2.轮播图 */
     banner();
     /* 3.倒计时 */
     downTime();
 };
-var serach = function () {
+const search = function () {
     /* 1.设置默认透明 */
-    var serachBox = document.querySelector('.search_box');
-    var bannerHeight = document.querySelector('.jd_banner').offsetHeight;
+    const searchBox = document.querySelector('.search_box');
+    const bannerHeight = document.querySelector('.jd_banner').offsetHeight;
 
     /* 监听页面滚动事件 */
     window.onscroll = function () {
-        var scrollTop = document.documentElement.scrollTop;
-        var opacity;
+        const scrollTop = document.documentElement.scrollTop;
+        let opacity;
         //console.log(scrollTop, bannerHeight, scrollTop / bannerHeight);
         if (scrollTop < bannerHeight) {
             /* 2.随页面滚动，透明度改变 */
@@ -23,39 +23,39 @@ var serach = function () {
             /* 3.滚动到移动高度后，透明度不变 */
             opacity = 1;
         }
-        serachBox.style.backgroundColor = 'rgba(201,21,35,' + opacity + ')';
+        searchBox.style.backgroundColor = 'rgba(201,21,35,' + opacity + ')';
     }
 };
 
-var banner = function () {
+const banner = function () {
     /* 1.实现图片轮播，无缝切换*/
     /* 2.点跟随图片一起改变*/
     /* 3.根据手指的滑动切换图片，滑动到一定距离切换，未滑动到一定距离恢复*/
 
-    var banner = document.querySelector('.jd_banner');
-    var width = banner.offsetWidth;
-    var imgBox = banner.querySelector('ul:first-child');
-    var pointBox = banner.querySelector('ul:last-child');
-    var points = pointBox.querySelectorAll('li');
+    const banner = document.querySelector('.jd_banner');
+    const width = banner.offsetWidth;
+    const imgBox = banner.querySelector('ul:first-child');
+    const pointBox = banner.querySelector('ul:last-child');
+    const points = pointBox.querySelectorAll('li');
 
     //创建添加过渡动画的函数
-    var addTransition = function () {
+    const addTransition = function () {
         imgBox.style.transition = 'all 0.5s ease-out';
         imgBox.style.webkitTransition = 'all 0.5s ease-out';
     };
     //创建去除过渡动画的函数
-    var removeTransition = function () {
+    const removeTransition = function () {
         imgBox.style.transition = 'none';
         imgBox.style.webkitTransition = 'none';
     };
     //创建设置x轴平移的函数
-    var setTranslate = function (translateX) {
+    const setTranslate = function (translateX) {
         imgBox.style.transform = 'translateX(' + translateX + 'px)';
         imgBox.style.webkitTransform = 'translateX(' + translateX + 'px)';
     };
 
-    var index = 1;
-    var timer = setInterval(function () {
+    let index = 1;
+    let timer = setInterval(function () {
         index++;
         /*加过渡*/
         addTransition();
@@ -84,10 +84,10 @@ var banner = function () {
     });
 
     //创建点移动函数
-    var setPoint = function () {
+    const setPoint = function () {
         //清楚所有点的样式
-        for (var i = 0; i < points.length; i++) {
-            var obj = points[i];
+        for (let i = 0; i < points.length; i++) {
+            let obj = points[i];
             obj.classList.remove('now');
         }
         //为当前点加上样式
@@ -95,9 +95,9 @@ var banner = function () {
     };
 
     //设置滑动事件
-    var startX = 0;
-    var distanceX = 0;
-    var isMove = false;//设置一个值用于判断是否发生滑动事件
+    let startX = 0;
+    let distanceX = 0;
+    let isMove = false;//设置一个值用于判断是否发生滑动事件
     imgBox.addEventListener('touchstart', function (e) {
         //当手指触摸时，清除轮播定时器
         clearInterval(timer);
@@ -107,11 +107,11 @@ var banner = function () {
     });
     imgBox.addEventListener('touchmove', function (e) {
         //获取手指移动的点
-        var moveX = e.touches[0].clientX;
+        let moveX = e.touches[0].clientX;
         //获取手指滑动的距离
         distanceX = moveX - startX;
         //获取图片需要做的位移值
-        var translateX = -index * width + distanceX;
+        let translateX = -index * width + distanceX;
         removeTransition();
         setTranslate(translateX);
         isMove = true;//发生滑动，赋值true
@@ -154,6 +154,6 @@ var banner = function () {
     });
 };
 
-var downTime = function () {
+const downTime = function () {
 
 };
