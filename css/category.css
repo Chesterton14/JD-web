@@ -1,0 +1,119 @@
+/*设置全屏容器*/
+html,body{
+    height: 100%;
+}
+.main{
+    width: 100%;
+    height: 100%;
+}
+/*头部搜索*/
+.h {
+    width: 100%;
+    height: 45px;
+    background: url(../img/header-bg.png);
+    background-size: 100% 100%;
+    position: relative;
+    border-bottom: 1px solid #ccc;
+}
+
+.h .icon_left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 45px;
+    height: 45px;
+    padding: 12px;
+    background-position: -20px 0;
+    background-origin: content-box;
+    background-clip: content-box;
+}
+
+.h .icon_right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 45px;
+    height: 45px;
+    padding: 12px;
+    background-position: -60px 0;
+    background-origin: content-box;
+    background-clip: content-box;
+
+}
+
+.h .in {
+    width: 100%;
+    height: 45px;
+    padding: 0 45px;
+
+}
+
+.h .in input {
+    width: 100%;
+    height: 31px;
+    margin-top: 7px;
+    padding-left: 30px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+
+.h .in .icon_search {
+    position: absolute;
+    top: 0;
+    margin-left: 4px;
+    margin-top: 9px;
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+    background-position: -59px -109px;
+    background-origin: content-box;
+    background-clip: content-box;
+}
+
+.btn_right {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    width: 40px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 8px;
+    border-style: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #e93b3d;
+    display: none;
+}
+/*搜索提示*/
+.searchTip{
+    margin: 20px 0 0 15px;
+    display: none;
+}
+.searchTip .tipHeader{
+    margin-bottom: 5px;
+}
+.searchTip .tipBody span{
+    overflow: hidden;
+    float: left;
+    margin-top: 5px;
+    margin-left: 0;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+.searchTip .tipBody span a{
+    height: 23px;
+    line-height: 23px;
+    padding:  2px 13px;
+    background-color:  #f0f2f5;
+    border-radius: 3px;
+    font-size: 12px;
+}
+.searchTip .tipBody span:nth-child(1) a{
+    color: #e93b3d ;
+}
+.searchTip .tipBody span:nth-child(2) a{
+    color: #e93b3d ;
+}
+.searchTip .tipBody span:nth-child(3) a{
+    color: #e93b3d ;
+}

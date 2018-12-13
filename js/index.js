@@ -6,15 +6,15 @@ window.onload = function () {
     /* 3.倒计时 */
     downTime();
 };
-const search = function () {
+var search = function () {
     /* 1.设置默认透明 */
-    const searchBox = document.querySelector('.search_box');
-    const bannerHeight = document.querySelector('.jd_banner').offsetHeight;
+    var searchBox = document.querySelector('.search_box');
+    var bannerHeight = document.querySelector('.jd_banner').offsetHeight;
 
     /* 监听页面滚动事件 */
     window.onscroll = function () {
-        const scrollTop = document.documentElement.scrollTop;
-        let opacity;
+        var scrollTop = document.documentElement.scrollTop;
+        var opacity;
         //console.log(scrollTop, bannerHeight, scrollTop / bannerHeight);
         if (scrollTop < bannerHeight) {
             /* 2.随页面滚动，透明度改变 */
@@ -27,35 +27,35 @@ const search = function () {
     }
 };
 
-const banner = function () {
+var banner = function () {
     /* 1.实现图片轮播，无缝切换*/
     /* 2.点跟随图片一起改变*/
     /* 3.根据手指的滑动切换图片，滑动到一定距离切换，未滑动到一定距离恢复*/
 
-    const banner = document.querySelector('.jd_banner');
-    const width = banner.offsetWidth;
-    const imgBox = banner.querySelector('ul:first-child');
-    const pointBox = banner.querySelector('ul:last-child');
-    const points = pointBox.querySelectorAll('li');
+    var banner = document.querySelector('.jd_banner');
+    var width = banner.offsetWidth;
+    var imgBox = banner.querySelector('ul:first-child');
+    var pointBox = banner.querySelector('ul:last-child');
+    var points = pointBox.querySelectorAll('li');
 
     //创建添加过渡动画的函数
-    const addTransition = function () {
+    var addTransition = function () {
         imgBox.style.transition = 'all 0.5s ease-out';
         imgBox.style.webkitTransition = 'all 0.5s ease-out';
     };
     //创建去除过渡动画的函数
-    const removeTransition = function () {
+    var removeTransition = function () {
         imgBox.style.transition = 'none';
         imgBox.style.webkitTransition = 'none';
     };
     //创建设置x轴平移的函数
-    const setTranslate = function (translateX) {
+    var setTranslate = function (translateX) {
         imgBox.style.transform = 'translateX(' + translateX + 'px)';
         imgBox.style.webkitTransform = 'translateX(' + translateX + 'px)';
     };
 
-    let index = 1;
-    let timer = setInterval(function () {
+    var index = 1;
+    var timer = setInterval(function () {
         index++;
         /*加过渡*/
         addTransition();
@@ -84,10 +84,10 @@ const banner = function () {
     });
 
     //创建点移动函数
-    const setPoint = function () {
+    var setPoint = function () {
         //清楚所有点的样式
-        for (let i = 0; i < points.length; i++) {
-            let obj = points[i];
+        for (var i = 0; i < points.length; i++) {
+            var obj = points[i];
             obj.classList.remove('now');
         }
         //为当前点加上样式
@@ -95,9 +95,9 @@ const banner = function () {
     };
 
     //设置滑动事件
-    let startX = 0;
-    let distanceX = 0;
-    let isMove = false;//设置一个值用于判断是否发生滑动事件
+    var startX = 0;
+    var distanceX = 0;
+    var isMove = false;//设置一个值用于判断是否发生滑动事件
     imgBox.addEventListener('touchstart', function (e) {
         //当手指触摸时，清除轮播定时器
         clearInterval(timer);
@@ -107,11 +107,11 @@ const banner = function () {
     });
     imgBox.addEventListener('touchmove', function (e) {
         //获取手指移动的点
-        let moveX = e.touches[0].clientX;
+        var moveX = e.touches[0].clientX;
         //获取手指滑动的距离
         distanceX = moveX - startX;
         //获取图片需要做的位移值
-        let translateX = -index * width + distanceX;
+        var translateX = -index * width + distanceX;
         removeTransition();
         setTranslate(translateX);
         isMove = true;//发生滑动，赋值true
@@ -154,6 +154,23 @@ const banner = function () {
     });
 };
 
-const downTime = function () {
+var downTime = function () {
+    //倒计时时间
+    var time = 24*60*60;
+    var spans = document.querySelector('.sk_time').querySelectorAll('span');
+    var timer = setInterval(function () {
+        time--;
+        var h=Math.floor(time/3600);
+        var m=Math.floor(time%3600/60);
+        var s=time%60;
+
+        spans[0].innerHTML=Math.floor(h/10);
+        spans[1].innerHTML=h%10;
+        spans[3].innerHTML=Math.floor(m/10);
+        spans[4].innerHTML=m%10;
+        spans[6].innerHTML=Math.floor(s/10);
+        spans[7].innerHTML=s%10;
+        //console.log(time,h,m,s);
+    },1000);
 
 };

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>京东-分类页</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" href="css/category.css">
+</head>
+<body>
+<div class="main">
+    <header class="h">
+        <a href="index.html" class="icon_left"></a>
+        <form class="in">
+            <span class="icon_search"></span>
+            <input type="search" class="h_input" placeholder="点击搜索">
+        </form>
+        <a href="" class="icon_right"></a>
+        <button type="button" class="btn_right">搜索</button>
+    </header>
+    <div class="searchTip">
+        <div class="tipHeader">热门搜索</div>
+        <div class="tipBody">
+            <span><a href="">防尘鞋架</a></span>
+            <span><a href="">电脑桌</a></span>
+            <span><a href="">紫砂花盆</a></span>
+            <span><a href="">充电宝</a></span>
+            <span><a href="">摩托车跑车</a></span>
+            <span><a href="">增压花洒喷头</a></span>
+            <span><a href="">游戏显卡</a></span>
+            <span><a href="">影碟机便携式</a></span>
+            <span><a href="">美的电饭煲</a></span>
+            <span><a href="">电脑写字板</a></span>
+            <span><a href="">铝框拉杆箱</a></span>
+            <span><a href="">活性炭</a></span>
+        </div>
+    </div>
+</div>
+<script>
+    window.onload = function () {
+        document.querySelector('.h_input').addEventListener('focus', function (e) {
+            //console.log(e);
+            document.querySelector('.icon_right').style.display = 'none';
+            document.querySelector('.in').style.paddingRight = '60px';
+            document.querySelector('.btn_right').style.display = 'inline-block';
+            document.querySelector('.searchTip').style.display = 'inline-block';
+            document.querySelector('.icon_left').setAttribute('onclick', 'iconLeft()');
+            document.querySelector('.icon_left').setAttribute('href', 'javascript:');
+        }, false);
+
+    };
+    function iconLeft() {
+        //console.log('返回');
+        document.querySelector('.icon_right').style.display = 'inline-block';
+        document.querySelector('.in').style.paddingRight = '45px';
+        document.querySelector('.btn_right').style.display = 'none';
+        document.querySelector('.searchTip').style.display = 'none';
+        document.querySelector('.icon_left').removeAttribute('onclick');
+        setTimeout(function () {
+            document.querySelector('.icon_left').setAttribute('href', 'index.html');
+        },0)
+
+    }
+</script>
+</body>
+</html>

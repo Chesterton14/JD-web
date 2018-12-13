@@ -2,14 +2,15 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0"/>
     <title>Title</title>
     <style>
-        *{
+        * {
             padding: 0;
             margin: 0;
         }
-        .box{
+
+        .box {
             width: 200px;
             height: 200px;
             background-color: #333333;
@@ -17,9 +18,123 @@
     </style>
 </head>
 <body>
-    <div class="box"></div>
+<div class="box"></div>
 </body>
 <script>
+/*  es5
+    'use strict';
+    window.onload = function () {
+        //实现手势
+        //1.发生滑动，需要达到一定距离
+        var bindSwipeEvent = function bindSwipeEvent(dom, leftCallback, rightCallback) {
+            var startX = 0;
+            var distanceX = 0;
+            var isMove = false;
+            dom.addEventListener('touchstart', function (e) {
+                startX = e.touches[0].clientX;
+            });
+            dom.addEventListener('touchmove', function (e) {
+                isMove = true;
+                var moveX = e.touches[0].clientX;
+                distanceX = moveX - startX;
+            });
+            dom.addEventListener('touchend', function (e) {
+                if (isMove && Math.abs(distanceX) > 50) {
+                    if (distanceX > 0) {
+                        rightCallback && rightCallback.call(this, e);
+                    } else {
+                        leftCallback && leftCallback.call(this, e);
+                    }
+                }
+            });
+            startX = 0;
+            distanceX = 0;
+            isMove = false;
+        };
+        bindSwipeEvent(document.querySelector('.box'), function (e) {
+            console.log("左滑");
+            console.log(this);
+            console.log(e);
+        }, function (e) {
+            console.log("右滑");
+            console.log(this);
+            console.log(e);
+        });
+    };*/
+</script>
+<script>
+/*   es6
+    window.onload = function () {
+        //实现手势
+        //1.发生滑动，需要达到一定距离
+        const bindSwipeEvent = (dom, leftCallback, rightCallback) => {
+            let startX = 0;
+            let distanceX = 0;
+            let isMove = false;
+            dom.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+            dom.addEventListener('touchmove', (e) => {
+                isMove = true;
+                let moveX = e.touches[0].clientX;
+                distanceX = moveX - startX;
+            });
+            dom.addEventListener('touchend', (e) => {
+                if (isMove && Math.abs(distanceX) > 50) {
+                    if (distanceX > 0) {
+                        rightCallback();
+                    } else {
+                        leftCallback();
+                    }
+                }
+            });
+            startX = 0;
+            distanceX = 0;
+            isMove = false;
+        };
+        bindSwipeEvent(document.querySelector('.box'), () => {
+            console.log("左滑");
+        }, () => {
+            console.log("右滑");
+        });
+    }*/
+</script>
+<script>
+    'use strict';
 
+    window.onload = function () {
+        //实现手势
+        //1.发生滑动，需要达到一定距离
+        var bindSwipeEvent = function bindSwipeEvent(dom, leftCallback, rightCallback) {
+            var startX = 0;
+            var distanceX = 0;
+            var isMove = false;
+            dom.addEventListener('touchstart', function (e) {
+                startX = e.touches[0].clientX;
+            });
+            dom.addEventListener('touchmove', function (e) {
+                isMove = true;
+                var moveX = e.touches[0].clientX;
+                distanceX = moveX - startX;
+            });
+            dom.addEventListener('touchend', function (e) {
+                if (isMove && Math.abs(distanceX) > 50) {
+                    if (distanceX > 0) {
+                        rightCallback();
+                    } else {
+                        leftCallback();
+                    }
+                }
+            });
+            startX = 0;
+            distanceX = 0;
+            isMove = false;
+        };
+        bindSwipeEvent(document.querySelector('.box'), function () {
+            console.log("左滑");
+        }, function () {
+            console.log("右滑");
+        });
+    };
 </script>
 </html>
