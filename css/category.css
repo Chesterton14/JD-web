@@ -1,19 +1,24 @@
 /*设置全屏容器*/
-html,body{
+html, body {
     height: 100%;
 }
-.main{
+
+.main {
     width: 100%;
     height: 100%;
 }
+
 /*头部搜索*/
 .h {
     width: 100%;
     height: 45px;
     background: url(../img/header-bg.png);
     background-size: 100% 100%;
-    position: relative;
     border-bottom: 1px solid #ccc;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
 .h .icon_left {
@@ -24,6 +29,12 @@ html,body{
     height: 45px;
     padding: 12px;
     background-position: -20px 0;
+    /*让背景从内容开始平铺*/
+    /*
+    border-box 边框以外被裁剪(默认)
+    padding-box 内边距以外被裁剪
+    content-box 内容以外被裁剪
+    */
     background-origin: content-box;
     background-clip: content-box;
 }
@@ -36,6 +47,7 @@ html,body{
     height: 45px;
     padding: 12px;
     background-position: -60px 0;
+    /*让背景从内容开始平铺*/
     background-origin: content-box;
     background-clip: content-box;
 
@@ -84,15 +96,18 @@ html,body{
     background-color: #e93b3d;
     display: none;
 }
+
 /*搜索提示*/
-.searchTip{
-    margin: 20px 0 0 15px;
+.searchTip {
+    margin: 65px 0 0 15px;
     display: none;
 }
-.searchTip .tipHeader{
+
+.searchTip .tipHeader {
     margin-bottom: 5px;
 }
-.searchTip .tipBody span{
+
+.searchTip .tipBody span {
     overflow: hidden;
     float: left;
     margin-top: 5px;
@@ -100,20 +115,139 @@ html,body{
     margin-bottom: 5px;
     margin-right: 10px;
 }
-.searchTip .tipBody span a{
+
+.searchTip .tipBody span a {
     height: 23px;
     line-height: 23px;
-    padding:  2px 13px;
-    background-color:  #f0f2f5;
+    padding: 2px 13px;
+    background-color: #f0f2f5;
     border-radius: 3px;
     font-size: 12px;
 }
-.searchTip .tipBody span:nth-child(1) a{
-    color: #e93b3d ;
+
+.searchTip .tipBody span:nth-child(1) a {
+    color: #e93b3d;
 }
-.searchTip .tipBody span:nth-child(2) a{
-    color: #e93b3d ;
+
+.searchTip .tipBody span:nth-child(2) a {
+    color: #e93b3d;
 }
-.searchTip .tipBody span:nth-child(3) a{
-    color: #e93b3d ;
+
+.searchTip .tipBody span:nth-child(3) a {
+    color: #e93b3d;
+}
+/*内容区域*/
+.content{
+    width: 100%;
+    height: 100%;
+    padding-top: 45px;
+    padding-bottom: 40px;
+}
+/*内容区域左侧栏*/
+.content .content_left{
+    float: left;
+    width: 85px;
+    height: 100%;
+    background-color: #f8f8f8;
+    overflow: hidden;
+}
+.content .content_left ul{
+    width: 85px;
+}
+.content .content_left ul li{
+    width: 85px;
+    height: 43px;
+    line-height: 43px;
+    background-color: #f8f8f8;
+    text-align: center;
+    font-size: 14px;
+}
+.content .content_left ul li a{
+    display: block;
+}
+.content .content_left .now{
+    background-color: white;
+    border-right: 1px solid #f8f8f8;
+}
+.content .content_left .now a{
+    color: #e93b3d;
+}
+/*内容区域右侧栏*/
+.content .content_right{
+    height: 100%;
+    background-color: white;
+    overflow: hidden;
+}
+.content .content_right .content_right_box .right_box_item{
+    margin: 19px 7px 0 7px;
+}
+.content .content_right .content_right_box:last-child{
+    padding-bottom: 30px;
+}
+.content .content_right .content_right_box .right_box_item ul{
+    margin-top: 9px;
+    padding: 7px 10px 0 10px;
+
+}
+.content .content_right .content_right_box .right_box_item ul li{
+    width: 33.3333%;
+    float: left;
+    text-align: center;
+    display: block;
+}
+.content .content_right .content_right_box .right_box_item ul li a img{
+    width: 70px;
+    height: 70px;
+    display: block;
+    margin: 0 auto;
+}
+@media screen and (max-width: 320px){
+    .content .content_right .content_right_box .right_box_item ul li a img{
+        width: 60px;
+        height: 60px;
+        display: block;
+    }
+}
+
+.content .content_right .content_right_box .right_box_item ul li a span{
+    color: #333;
+    height: 35px;
+    margin-top: 2px;
+    display: block;
+    font-size: 12px;
+
+}
+/* ===== 底部导航 ===== */
+.nav_bottom{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+.nav_bottom .bottom_box{
+    width: 100%;
+    height: 40px;
+    min-width: 320px;
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 0 1px #CCCCCC;
+}
+.nav_bottom ul{
+    width: 100%;
+    text-align: center;
+}
+.nav_bottom ul li{
+    width: 20%;
+    margin: 0 auto;
+    float: left;
+}
+.nav_bottom ul li a{
+    display: block;
+}
+.nav_bottom ul li a img{
+    width: 50px;
+    height: 40px;
 }
